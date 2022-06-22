@@ -4,8 +4,11 @@
 """
 
 
-def power_numbers(int_list):
-    return [i ** 2 for i in int_list]
+def power_numbers(*nums):
+    result = []
+    for num in nums:
+        result.append(num ** 2)
+    return result
 
     """
     функция, которая принимает N целых чисел,
@@ -15,9 +18,8 @@ def power_numbers(int_list):
     """
 
 
-int_array = [1, 2, 5, 7]
 print('Work with function power_numbers ========')
-print("List of numbers is", list(int_array), ', square of numbers is', power_numbers(int_array))
+print("List of numbers is", (1, 2, 5, 7), ', square of numbers is', power_numbers(1, 2, 5, 7))
 
 # filter types
 ODD = "odd"
@@ -34,9 +36,9 @@ def int_is_odd(num):
 
 
 def int_is_prime(num):
-    result = True
-
+    result = False
     if num > 1:
+        result = True
         for i in range(2, num):
             if (num % i) == 0:
                 result = False
