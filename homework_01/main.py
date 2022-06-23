@@ -17,7 +17,7 @@ def power_numbers(*nums):
     <<< [1, 4, 25, 49]
     """
 
-
+print("Homework 1, Task 1")
 print('Work with function power_numbers ========')
 print("List of numbers is", (1, 2, 5, 7), ', square of numbers is', power_numbers(1, 2, 5, 7))
 
@@ -67,7 +67,8 @@ def filter_numbers(int_list, get_only):
     else:
         return None
 
-
+print("")
+print("Homework 1, Task 2")
 int_array = range(20)
 print('Work with function filter_numbers ========')
 print('Full  list    is:', list(int_array))
