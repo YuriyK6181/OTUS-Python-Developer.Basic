@@ -5,17 +5,17 @@
 
 
 def power_numbers(*nums):
+    """
+    Функция, которая принимает N целых чисел,
+    и возвращает список квадратов этих чисел
+    >>> power_numbers(1, 2, 5, 7)
+    <<< [1, 4, 25, 49]
+    """
     result = []
     for num in nums:
         result.append(num ** 2)
     return result
 
-    """
-    функция, которая принимает N целых чисел,
-    и возвращает список квадратов этих чисел
-    >>> power_numbers(1, 2, 5, 7)
-    <<< [1, 4, 25, 49]
-    """
 
 print("Homework 1, Task 1")
 print('Work with function power_numbers ========')
@@ -45,8 +45,10 @@ def int_is_prime(num):
                 break
     return result
 
+
+def filter_numbers(int_list, get_only):
     """
-    функция, которая на вход принимает список из целых чисел,
+    Функция, которая на вход принимает список из целых чисел,
     и возвращает только чётные/нечётные/простые числа
     (выбор производится передачей дополнительного аргумента)
 
@@ -55,9 +57,6 @@ def int_is_prime(num):
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
-
-
-def filter_numbers(int_list, get_only):
     if get_only == ODD:
         return list(filter(int_is_odd, int_list))
     elif get_only == EVEN:
@@ -66,6 +65,7 @@ def filter_numbers(int_list, get_only):
         return list(filter(int_is_prime, int_list))
     else:
         return None
+
 
 print("")
 print("Homework 1, Task 2")
