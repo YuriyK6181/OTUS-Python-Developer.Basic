@@ -22,15 +22,18 @@ def root():
 def hello(name: constr(min_length=3) = "OTUS"):
     return {"message": "Hello, "+name+'!', "now": datetime.now()}
 
+
 @app.get("/ping")
 def ping():
     return {"message": "pong"}
 
+
 @app.get("/get_sym_code")
-def get_sym_code(s:str):
+def get_sym_code(s: str):
     if len(s) > 1:
         s = s[1]
     return {"message": "Code for symbol '"+s+"' is "+str(ord(s))}
+
 
 @app.get("/get_str_to_code")
 def get_sym_code(s: str):
@@ -42,6 +45,7 @@ def get_sym_code(s: str):
         res.append(mes+":"+cod)
     return res
 
+
 @app.get("/power")
 def add_values(a: int, b: int):
     return {
@@ -49,4 +53,3 @@ def add_values(a: int, b: int):
         "b": b,
         "power": a ** b,
     }
-
