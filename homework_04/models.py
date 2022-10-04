@@ -101,7 +101,7 @@ async def fill_posts(session: AsyncSession, posts_list: list[dict]):
 
 async_engine: AsyncEngine = create_async_engine(PG_CONN_URI, echo=True)
 
-async_session = sessionmaker(
+Session = sessionmaker(
     async_engine,
     class_=AsyncSession,
     expire_on_commit=False,

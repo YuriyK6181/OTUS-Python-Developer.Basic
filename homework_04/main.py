@@ -3,7 +3,7 @@ from loguru import logger
 from models import (
     Base,
     async_engine,
-    async_session as async_session,
+    Session as async_session,
     fill_users,
     fill_posts,
     )
@@ -26,7 +26,7 @@ async def get_info():
     return users_data, posts_data
 
 
-async def main():
+async def async_main():
     await create_tables()
     users_data, posts_data = await get_info()
     logger.info("Users: Recs={}, Symb={}", len(users_data), len(str(users_data)))
@@ -42,4 +42,4 @@ if __name__ == "__main__":
     # Set event Policy only if work on Windows to prevent showing Error "Event loop is closed"
     # asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-    asyncio.run(main())
+    asyncio.run(async_main())
