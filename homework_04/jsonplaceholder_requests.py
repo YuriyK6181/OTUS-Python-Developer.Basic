@@ -13,13 +13,13 @@ async def fetch_json(session: aiohttp.ClientSession, url: str) -> dict:
     return data
 
 
-async def fetch_users_data() -> list[dict] | None:
+async def fetch_users_data() -> list[dict]:
     async with aiohttp.ClientSession() as session:
         data: dict = await fetch_json(session, USERS_DATA_URL)
         return data
 
 
-async def fetch_posts_data() -> list[dict] | None:
+async def fetch_posts_data() -> list[dict]:
     async with aiohttp.ClientSession() as session:
         data: dict = await fetch_json(session, POSTS_DATA_URL)
         return data

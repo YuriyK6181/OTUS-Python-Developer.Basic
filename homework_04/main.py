@@ -40,6 +40,6 @@ async def main():
 
 if __name__ == "__main__":
     # Set event Policy only if work on Windows to prevent showing Error "Event loop is closed"
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    # asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
     asyncio.run(main())
