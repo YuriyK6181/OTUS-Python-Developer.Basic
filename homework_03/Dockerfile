@@ -1,14 +1,11 @@
-FROM python:3.9-buster
-#FROM python:3.10-bullseye
+FROM python:3.10-bullseye
 WORKDIR /app
-# RUN apt update && apt install -y python3
 
 RUN pip install --upgrade pip
 RUN pip install poetry==1.1.14
 RUN poetry config virtualenvs.create false
 
-COPY poetry.lock .
-COPY pyproject.toml .
+COPY poetry.lock pyproject.toml ./
 
 RUN poetry install
 
