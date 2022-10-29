@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        {%  block title %}
+        Base title
+        {%  endblock %}
+    </title>
+
+      <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+        {%  block head %}
+
+        {%  endblock %}
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md bg-light">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% for endpoint, label in [
+          ('index_page', 'Home'),
+          ('about_page', 'About')
+          ] %}
+          {% set path = url_for(endpoint) %}
+
+          <li class="nav-item">
+            <a class="nav-link {{ 'active' if path == request.path else '' }}"
+               href="{{ path }}">
+              {{ label }}
+            </a>
+          </li>
+        {% endfor %}
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Menu
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/">Home</a></li>
+            <li><a class="dropdown-item" href="/about">About</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+        {%  block body %}
+            Base body
+        {%  endblock %}
+
+<footer>
+    Flask Web-App - Home Work 05,  2022
+</footer>
+
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}">
+</script>
+
+</body>
+
+</html>
