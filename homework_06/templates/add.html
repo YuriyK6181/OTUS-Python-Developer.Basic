@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Add Item
+{% endblock %}
+
+{% block body %}
+  <div>
+    <h3>Add new Item in DB</h3>
+
+     <form method="post">
+
+            {{ form.hidden_tag() }}
+            {{ form.name.label }}
+         <BR>
+            {{ form.name(size=25) }}
+
+      <button class="btn btn-outline-secondary btn-sm"
+        type="submit">  ADD  </button>
+    </form>
+  </div>
+
+{% endblock %}
