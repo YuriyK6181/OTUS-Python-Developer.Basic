@@ -1,0 +1,26 @@
+[
+  {
+    "model": "veloride.BikeType",
+    "pk": 1,
+    "fields": {
+      "name": "Classic",
+      "description": "Classic Bike"
+    }
+  },
+  {
+    "model": "veloride.BikeType",
+    "pk": 2,
+    "fields": {
+      "name": "Endurance",
+      "description": "Bike for long distances"
+    }
+  },
+  {
+    "model": "veloride.BikeType",
+    "pk": 3,
+    "fields": {
+      "name": "Cross Country",
+      "description": "Bike for country roads"
+    }
+  }
+]

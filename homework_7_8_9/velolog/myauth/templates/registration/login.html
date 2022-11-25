@@ -1,0 +1,40 @@
+{% extends 'veloride/base.html' %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block body %}
+  <h2>Please Enter Login, Password</h2>
+    <p></p>
+  {% if form.errors %}
+    <p>Incorrect username and/or password. Change and try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p class="alert alert-danger my-2">
+        Your account level is too low to see this page.</p>
+    {% else %}
+      <p class="alert alert-secondary my-2">
+        Unauthorized users can't see this page.</p>
+    {% endif %}
+  {% endif %}
+
+  {% if user.is_authenticated %}
+    <div class="alert alert-info my-1" role="alert">
+      Already authorized as {{ user }}
+      <br>
+      Link to your page is <a href="{% url 'myauth:my' %}">here</a>
+    </div>
+  {% endif %}
+
+
+  <form method="post" action="{% url 'myauth:login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-outline-secondary" type="submit" value="Login">
+    <input type="hidden" name="next" value="{{ next }}">
+  </form>
+
+{% endblock %}

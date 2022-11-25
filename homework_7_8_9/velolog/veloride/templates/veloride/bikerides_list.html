@@ -1,0 +1,51 @@
+{% extends 'veloride/base.html' %}
+
+{% block title %}
+  Список велозаездов
+{% endblock %}
+
+{% block body %}
+  <h1>Cписок велозаездов</h1>
+    <p></p>
+        <table class="table table-light table-bordered table-striped">
+        <tbody>
+             <tr class="align-middle"><th width="400">
+                 {% if image_url %}
+                      <img alt="Фото" src={{ image_url }}>
+                 {% endif %}
+                 <table class="table table-light table-borderless">
+        <tbody>
+            <thead>
+                <tr>
+                    <th class="fa-align-left" scope="col">
+                        <h6><b>Доступные действия:</b></h6>
+                        <a class="btn btn-outline-secondary" href="{% url 'veloride:create-bikeride' %}">Добавить</a>
+                        <a class="btn btn-outline-secondary" href="{% url 'veloride:index' %}">Назад к списку</a>
+                    </th>
+                </tr>
+            </thead>
+        </tbody>
+    </table>
+             </th>
+            <td>
+     <table class="table table-light table-bordered table-striped">
+        <tbody>
+            <tr><th>Дата</th><th>Тип</th><th>Название</th><th>Велосипед</th><th width="100">Дистанция, км</th><th width="100">V ср, км/ч</th><th width="100">Общее время</th><th width="100">Время в пути</th></tr>
+            {% for oper in bikerides %}
+                <tr><td>{{ oper.ride_start_dt|date:"d.m.Y H:i"|default_if_none:'-' }}</td>
+                    <td>{{ oper.ride_type|default_if_none:'-' }}</td>
+                    <td><a href="{% url 'veloride:bikeride' oper.pk %}">{{ oper.name|default_if_none:'-' }}</a></td>
+                    <td>{{ oper.ride_bike|default_if_none:'-' }}</td>
+                    <td>{{ oper.ride_dst|floatformat:1|default_if_none:'-' }}</td>
+                    <td>{{ oper.ride_avg_s|floatformat:1|default_if_none:'-' }}</td>
+                    <td>{{ oper.ride_time_all_h|default_if_none:'-' }}:{{ oper.ride_time_all_m|default_if_none:'-' }}</td>
+                    <td>{{ oper.ride_time_h|default_if_none:'-' }}:{{ oper.ride_time_m|default_if_none:'-' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+            </td>
+             </tr>
+        </tbody>
+        </table>
+{% endblock %}

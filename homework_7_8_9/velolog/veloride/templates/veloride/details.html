@@ -1,0 +1,68 @@
+{% extends "veloride/base.html" %}
+
+{% block title %}
+    {{ bike.model_name }} подробно
+{% endblock %}
+
+{% block body %}
+    <h1>Велосипед <strong>{{ bike }}</strong></h1>
+    <p></p>
+    <table class="table table-light table-bordered table-striped table-sm">
+        <tbody>
+            <tr class="align-middle"><th width="400">
+                {% if bike.main_pict %}
+                      <img alt="Фото" src={{ bike.main_pict.url }}>
+                {% endif %}
+                <table class="table table-light table-borderless">
+                     <tbody>
+                         <thead>
+                            <tr>
+                                 <th class="fa-align-left" scope="col">
+                                      <h6><b>Доступные действия:</b></h6>
+                                      <a class="btn btn-outline-secondary" href="{% url 'veloride:update' bike.pk %}">Правка</a>
+                                      <a class="btn btn-outline-secondary" href="{% url 'veloride:delete' bike.pk %}">Удалить</a>
+                                      <a class="btn btn-outline-secondary" href="{% url 'veloride:index' %}">Назад к списку</a>
+                                 </th>
+                            </tr>
+                         </thead>
+                    </tbody>
+                </table>
+            </th>
+            <td>
+                <h5><strong>Характеристики подробно:</strong></h5>
+              <p></p>
+              <table class="table table-light table-bordered table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col" width="300">Свойство</th>
+                    <th scope="col">Значение</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr><td>Класс</td><td>{{ bike.bike_class|default_if_none:'-' }}</td>
+                <tr><td>Тип</td><td>{{ bike.bike_type|default_if_none:'-' }}</td>
+                <tr><td>Год выпуска</td><td>{{ bike.model_year|default_if_none:'-' }}</td>
+                <tr><td>Дата приобретения</td><td>{{ bike.bought_date|date:"d.m.Y"|default_if_none:'-' }}</td>
+                <tr><td>Место приобретения</td><td>{{ bike.bought_in|default_if_none:'-' }}</td>
+                <tr><td>Цена, руб.</td><td>{{ bike.price|floatformat:2|default_if_none:'-' }}</td>
+                <tr><td>Скидка, %</td><td>{{ bike.discount|default_if_none:'-' }}</td>
+                <tr><td>Цена без скидки, руб.</td><td>{{ bike.orig_price|floatformat:2|default_if_none:'-' }}</td>
+                <tr><td>Приобретен новым</td>
+                    <td>
+                        {% if bike.is_new %}
+                            Да
+                        {% else %}
+                            Нет
+                        {% endif %}
+                    </td>
+                {% if not bike.is_new %}
+                    <tr><td>С пробегом, км</td><td>{{ bike.old_odo|default_if_none:'-' }}</td>
+                {% endif %}
+                <tr><td>Описание</td><td>{{ bike.description|default_if_none:'-' }}</td>
+                </tbody>
+              </table>
+            </td></tr>
+
+        </tbody>
+    </table>
+{% endblock %}

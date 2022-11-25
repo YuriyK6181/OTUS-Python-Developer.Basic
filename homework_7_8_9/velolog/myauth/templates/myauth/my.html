@@ -1,0 +1,9 @@
+{% extends 'veloride/base.html' %}
+
+{% block title %}
+  User info
+{% endblock %}
+
+{% block body %}
+  <h2>Hello <b>{% firstof user.username user %}!</b></h2>
+{% endblock %}

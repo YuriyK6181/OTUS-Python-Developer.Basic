@@ -1,0 +1,22 @@
+{% extends 'veloride/base.html' %}
+
+{% block title %}
+  Удаление велосипеда {{ bike }}
+{% endblock %}
+
+{% block body %}
+  <h1>Удалить велосипед</h1>
+  <form method="post">
+    {% csrf_token %}
+    <p>Вы действительно хотите удалить "{{ bike }}"?</p>
+    {{ form }}
+    <a
+      class="btn btn-secondary"
+      href="{% url 'veloride:details' bike.pk %}">
+      Отмена
+    </a>
+    <button class="btn btn-warning" type="submit">
+      Удалить
+    </button>
+  </form>
+{% endblock %}

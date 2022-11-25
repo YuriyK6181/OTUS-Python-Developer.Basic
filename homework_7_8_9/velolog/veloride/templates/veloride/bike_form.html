@@ -1,0 +1,28 @@
+{% extends 'veloride/base.html' %}
+
+{% block title %}
+  Новый велосипед
+{% endblock %}
+
+{% block body %}
+  <h1>Создание новой записи</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <p></p>
+     <table class="table table-light table-borderless">
+        <tbody>
+            <thead>
+                <tr>
+                    <th class="fa-align-left" scope="col">
+                        <h6><b>Доступные действия:</b></h6>
+                        <button class="btn btn-success" type="submit">Сохранить</button>
+                        <a class="btn btn-outline-secondary" href="{% url 'veloride:index' %}">Отмена</a>
+                    </th>
+                </tr>
+            </thead>
+        </tbody>
+    </table>
+  </form>
+{% endblock %}

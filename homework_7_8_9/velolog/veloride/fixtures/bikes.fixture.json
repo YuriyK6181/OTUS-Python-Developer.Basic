@@ -1,0 +1,62 @@
+[
+  {
+    "model": "veloride.bike",
+    "pk": 1,
+    "fields": {
+      "model_name" : "Custom",
+      "bike_class" : 1,
+      "bike_type": 1,
+      "manufacturer" : 1,
+      "model_year" : 2019,
+      "archived": false
+    }
+  },
+  {
+    "model": "veloride.bike",
+    "pk": 2,
+    "fields": {
+      "model_name" : "Ava Disc",
+      "bike_class" : 2,
+      "bike_type": 2,
+      "manufacturer" : 1,
+      "model_year" : 2020,
+      "archived": false
+    }
+  },
+  {
+    "model": "veloride.bike",
+    "pk": 3,
+    "fields": {
+      "model_name" : "Speedster Pro",
+      "bike_class" : 1,
+      "bike_type": 3,
+      "manufacturer" : 2,
+      "model_year" : 2020,
+      "archived": false
+    }
+  },
+  {
+    "model": "veloride.bike",
+    "pk": 4,
+    "fields": {
+      "model_name" : "EasyRide",
+      "bike_class" : 3,
+      "bike_type": 1,
+      "manufacturer" : 2,
+      "model_year" : 2018,
+      "archived": false
+    }
+  },
+  {
+    "model": "veloride.bike",
+    "pk": 5,
+    "fields": {
+      "model_name" : "Dominator",
+      "bike_class" : 2,
+      "bike_type": 1,
+      "manufacturer" : 3,
+      "model_year" : 2022,
+      "archived": false
+    }
+  }
+]

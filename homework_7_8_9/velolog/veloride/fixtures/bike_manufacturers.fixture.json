@@ -1,0 +1,23 @@
+[
+  {
+    "model": "veloride.Organization",
+    "pk": 1,
+    "fields": {
+      "name": "GT"
+    }
+  },
+  {
+    "model": "veloride.Organization",
+    "pk": 2,
+    "fields": {
+      "name": "Giant"
+    }
+  },
+  {
+    "model": "veloride.Organization",
+    "pk": 3,
+    "fields": {
+      "name": "Ghost"
+    }
+  }
+]

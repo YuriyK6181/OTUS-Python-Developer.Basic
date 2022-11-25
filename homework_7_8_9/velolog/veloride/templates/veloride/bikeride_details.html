@@ -1,0 +1,102 @@
+{% extends "veloride/base.html" %}
+
+{% block title %}
+    {{ bikeride.name }} подробно
+{% endblock %}
+
+{% block body %}
+    <h1>{{ bikeride.ride_type }} <strong>"{{ bikeride }}"</strong></h1>
+    <p></p>
+    <table class="table table-light table-bordered table-striped table-sm">
+        <tbody>
+            <tr class="align-middle">
+                <th width="400">
+                            <table class="table table-light table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th class="fa-align-left" scope="col">
+                                            <h6><b>Доступные действия:</b></h6>
+                                            <a class="btn btn-outline-secondary" href="{% url 'veloride:update-bikeride' bikeride.pk %}">Редактировать</a>
+                                            <a class="btn btn-outline-secondary" href="{% url 'veloride:delete-bikeride' bikeride.pk %}">Удалить</a>
+                                            <a class="btn btn-outline-secondary" href="{% url 'veloride:bikerides' %}">Назад к списку</a>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                </th>
+                <td>
+                    <table class="table table-light table-bordered table-striped table-sm">
+                        <tbody>
+                            <tr><th width="250">Наименование</th><td>{{ bikeride.name|default_if_none:'-' }}</td></tr>
+                            <tr><th width="250">Описание</th><td>{{ bikeride.description|default_if_none:'-' }}</td></tr>
+                            <tr><th width="250">Маршрут</th><td>{{ bikeride.route|default_if_none:'-' }}</td></tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-light table-bordered table-striped table-sm">
+                        <tbody>
+                            <tr><th width="250">Велосипед</th><td>{{ bikeride.ride_bike|default_if_none:'-' }}</td>
+                                <td width="160">{{ bikeride.ride_kkal|default_if_none:'-' }} кКал</td><th width="160">Старт</th>
+                                <th width="160">Финиш</th>
+                            </tr>
+                            <tr><th>Тип заезда</th><td>{{ bikeride.ride_type|default_if_none:'-' }}</td>
+                                <th>Дата</th><td>{{ bikeride.ride_start_dt|date:"d.m.Y"|default_if_none:'-' }}</td>
+                                <td>{{ bikeride.ride_finish_dt|date:"d.m.Y"|default_if_none:'-' }}</td>
+                            </tr>
+                            <tr><th>Статус</th>
+                                <td>
+                                    {% if bikeride.ride_planned %}
+                                        ЗАПЛАНИРОВАНО
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                                <th>Время</th><td>{{ bikeride.ride_start_dt|date:"H:i"|default_if_none:'-' }}</td>
+                                <td>{{ bikeride.ride_finish_dt|date:"H:i"|default_if_none:'-' }}</td>
+                            </tr>
+                            <tr><th>Участие</th>
+                                <td>
+                                    {% if bikeride.ride_planned %}
+                                        УЧАСТВОВАЛ
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                                <td>{{ bikeride.ride_relax|floatformat:2|default_if_none:'-' }} %</td><td>П У Л Ь С</td>
+                                <td>{{ bikeride.ride_avg_pwr|default_if_none:'-' }}/{{ bikeride.ride_max_pwr|default_if_none:'-' }} Вт</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-light table-bordered table-striped table-sm">
+                        <tbody>
+                            <tr><th width="300">Общее время</th><td>{{ bikeride.ride_time_all_h|default_if_none:'-' }}:{{ bikeride.ride_time_all_m|default_if_none:'-' }}</td>
+                                <th width="300">Время в движении</th><td>{{ bikeride.ride_time_h|default_if_none:'-' }}:{{ bikeride.ride_time_m|default_if_none:'-' }}</td>
+                            </tr>
+                            <tr><th>Дистанция, км</th><td>{{ bikeride.ride_dst|floatformat:1|default_if_none:'-' }}</td>
+                                <th>Одометр после, км</th><td>{{ bikeride.ride_odo|floatformat:1|default_if_none:'-' }}</td>
+                            </tr>
+                            <tr><th>Скорость средняя, км/ч</th><td>{{ bikeride.ride_avg_s|floatformat:1|default_if_none:'-' }}</td>
+                                <th>Скорость макс., км/ч</th><td>{{ bikeride.ride_max_s|floatformat:1|default_if_none:'-' }}</td>
+                            </tr>
+                            <tr><th>Мощность средняя, Вт</th><td>{{ bikeride.ride_avg_pwr|default_if_none:'-' }}</td>
+                                <th>Мощность макс., Вт</th><td>{{ bikeride.ride_max_pwr|default_if_none:'-' }}</td>
+                            </tr>
+                            <tr><th>Каденс средний, об/мин</th><td>{{ bikeride.ride_avg_c|default_if_none:'-' }}</td>
+                                <th>Каденс макс., об/мин</th><td>{{ bikeride.ride_max_c|default_if_none:'-' }}</td>
+                            </tr>
+                            <tr><th>Набор высоты, м</th><td>{{ bikeride.ride_total_asc|default_if_none:'-' }}</td>
+                                <th>Сброс высоты, м</th><td>{{ bikeride.ride_total_desc|default_if_none:'-' }}</td>
+                            </tr>
+                            <tr><th>Оценка заезда (фан-фактор), %</th><td>{{ bikeride.ride_fun_scale|default_if_none:'-' }} %</td>
+                                <th>Оценка сложности, %</th><td>{{ bikeride.ride_hard_scale|default_if_none:'-' }} %</td>
+                            </tr>
+                            <tr><th>Ссылка на заезд</th><td>{% if bikeride.ride_url %} <a href=' {{ bikeride.ride_url }}'> Перейти </a>{% endif %}</td>
+                                <th>Ссылка на трек</th><td>{% if bikeride.ride_track_url %} <a href=' {{ bikeride.ride_track_url }}'> Перейти </a>{% endif %}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

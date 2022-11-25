@@ -1,0 +1,26 @@
+[
+  {
+    "model": "veloride.BikeClass",
+    "pk": 1,
+    "fields": {
+      "name": "MTB",
+      "description": "MTB Bike"
+    }
+  },
+  {
+    "model": "veloride.BikeClass",
+    "pk": 2,
+    "fields": {
+      "name": "Road",
+      "description": "Road Bike"
+    }
+  },
+  {
+    "model": "veloride.BikeClass",
+    "pk": 3,
+    "fields": {
+      "name": "Hydrid",
+      "description": "Hybrid veloride"
+    }
+  }
+]

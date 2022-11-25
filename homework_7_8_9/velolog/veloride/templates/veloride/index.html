@@ -1,0 +1,47 @@
+{% extends 'veloride/base.html' %}
+
+{% block title %}
+  Список велосипедов
+{% endblock %}
+
+{% block body %}
+  <h1>Cписок велосипедов</h1>
+     <table class="table table-light table-bordered table-striped">
+        <tbody>
+             <tr class="align-middle"><th width="400">
+                 {% if image_url %}
+                      <img alt="Фото" src={{ image_url }}>
+                 {% endif %}
+                 <table class="table table-light table-borderless">
+        <tbody>
+            <thead>
+                <tr>
+                    <th class="fa-align-left" scope="col">
+                        <h6><b>Доступные действия:</b></h6>
+                        <a class="btn btn-outline-secondary" href="{% url 'veloride:create' %}">Добавить</a>
+                        <a class="btn btn-outline-secondary" href="{% url 'veloride:bikerides' %}">Заезды</a>
+                    </th>
+                </tr>
+            </thead>
+        </tbody>
+    </table>
+             </th>
+            <td>
+             <table class="table table-light table-bordered table-striped table-sm">
+                <tbody>
+                    <tr>
+                        <tr><th>Наименование</th><th>Класс</th><th>Тип</th><</tr>
+                         {% for oper in veloride %}
+                           <tr><th><a href="{% url 'veloride:details' oper.pk %}">{{ oper|default_if_none:'-' }}</a></th>
+                          <td>{{ oper.bike_class|default_if_none:'-' }}</td>
+                          <td>{{ oper.bike_type|default_if_none:'-' }}</td>
+                          </tr>
+                    </tr>
+            {% endfor %}
+                </tbody>
+             </table>
+             </td>
+             </tr>
+        </tbody>
+    </table>
+{% endblock %}
